@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أنشطة الكنيسة</title>
+    <style>
+        /* تعريف الألوان الأساسية والخطوط */
+        :root {
+            --bg-gradient: linear-gradient(135deg, #fbf7f0 0%, #f3eae0 100%);
+            --card-bg: #fffcf7;
+            --primary-text: #2c1e11;
+            --accent-gold: #c5a059;
+            --border-color: #f0e4d4;
+            --shadow: 0 8px 24px rgba(197, 160, 89, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            color: var(--primary-text);
+            min-height: 100vh;
+            padding: 20px 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* الحاوية الرئيسية المخصصة للموبايل */
+        .container {
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* الهيدر أو رأس الصفحة */
+        .header {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .header-info h1 {
+            font-size: 1.1rem;
+            color: #1a1108;
+            margin-bottom: 4px;
+        }
+
+        .header-info p {
+            font-size: 0.85rem;
+            color: #7a6e61;
+        }
+
+        .icon-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .icon-btn:hover {
+            background: #fdfaf4;
+            border-color: var(--accent-gold);
+        }
+
+        /* الكارت الرئيسي للمرحلة */
+        .main-card {
+            background: var(--card-bg);
+            border-radius: 32px;
+            padding: 25px 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .cross-icon {
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .main-card h2 {
+            font-size: 1.5rem;
+            color: #1a1108;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+
+        /* تصميم القوائم المنسدلة (Accordion) */
+        .accordion-item {
+            background: #ffffff;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-header {
+            padding: 18px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #3d2c1c;
+            user-select: none;
+            transition: background 0.2s;
+        }
+
+        .accordion-header:hover {
+            background: #fffbf5;
+        }
+
+        /* السهم الجانبي */
+        .arrow {
+            border: solid #6b5c4c;
+            border-width: 0 2px 2px 0;
+            display: inline-block;
+            padding: 4px;
+            transform: rotate(45deg);
+            transition: transform 0.3s ease;
+        }
+
+        /* المحتوى الداخلي عند الفتح */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: #fffdfa;
+        }
+
+        .content-body {
+            padding: 20px;
+            border-top: 1px solid #fcf6ed;
+            text-align: right;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* مخصصة لصور المحتوى داخل اللحن */
+        .content-image {
+            width: 100%;
+            border-radius: 12px;
+            margin-top: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* حالة الفتح النشطة المعتمدة على الجافاسكريبت */
+        .accordion-item.active .arrow {
+            transform: rotate(-135deg);
+        }
+        
+        .accordion-item.active {
+            border-color: var(--accent-gold);
+            box-shadow: 0 4px 15px rgba(197,160,89,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header class="header">
+            <div class="icon-btn">☀️</div>
+            <div class="header-info">
+                <h1> كنيسة القديس مارجرجس خدمة اعدادى</h1>
+                <p>مسابقات • ألحان • كورال</p>
+            </div>
+            <div class="icon-btn">⛪</div>
+        </header>
+
+        <main class="main-card">
+            <div class="cross-icon">✦</div>
+            <h2>ألحان اعدادى<br>مستوى ثاني</h2>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>لحن 1: تين اووشت</span>
+                    <i class="arrow"></i>
+                </div>
+                <div class="accordion-content">
+                    <div class="content-body">
+                        <p>هنا نكتب الكلمات القبطية أو الهزات الخاصة بلحن تين اووشت السنوي...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>لحن 2: المزمور 150 الهوس الرابع</span>
+                    <i class="arrow"></i>
+                </div>
+                <div class="accordion-content">
+                    <div class="content-body">
+                        <p><strong>الكلمات:</strong> سبحوا الله في جميع قديسيه. سبحوه في جلد قوته...</p>
+                        <img src="https://via.placeholder.com/400x300/e6dfd5/2c1e11?text=صورة+المزمور+هنا" alt="المزمور 150" class="content-image">
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>نشاط 3: مسابقة الكتاب المقدس</span>
+                    <i class="arrow"></i>
+                </div>
+                <div class="accordion-content">
+                    <div class="content-body">
+                        <p>تفاصيل وأسئلة مسابقة سفر أعمال الرسل لشهر يونيو...</p>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const content = item.querySelector('.accordion-content');
+                
+                // قفل أي قائمة تانية مفتوحة (اختياري)
+                document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.accordion-content').style.maxHeight = null;
+                    }
+                });
+
+                // فتح أو قفل القائمة الحالية
+                item.classList.toggle('active');
+                if (item.classList.contains('active')) {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                } else {
+                    content.style.maxHeight = null;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
